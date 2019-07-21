@@ -3,7 +3,7 @@ variable "INSTANCE_PASSWORD" { }
 resource "aws_instance" "win_vm" {
   ami = "ami-0d41aee8a57fdb850"
   instance_type = "t2.micro"
-  availability_zone           = "us-east-1a"
+  availability_zone           = "eu-central-1b"
   ebs_optimized               = false
   monitoring                  = false
   key_name                    = "${var.aws_key}"
@@ -18,8 +18,8 @@ resource "aws_instance" "win_vm" {
   }
   user_data = <<EOF
 <powershell>
-net user nagrawal '${var.INSTANCE_PASSWORD}' /add /y
-net localgroup administrators nagrawal /add
+net user prakashuser '${var.INSTANCE_PASSWORD}' /add /y
+net localgroup administrators prakashuser /add
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="300"}'
 winrm set winrm/config '@{MaxTimeoutms="1800000"}'
@@ -72,7 +72,7 @@ EOF
     host = coalesce(self.public_ip, self.private_ip)
     type = "winrm"
     timeout = "10m"
-    user = "nagrawal"
+    user = "prakashuser"
     password = "${var.INSTANCE_PASSWORD}"
   }
 }
