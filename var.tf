@@ -5,7 +5,7 @@ variable "aws_vpc" {
 
 variable "aws_subnet" {
     description = "aws subnet"
-    default = "subnet-81b9a0fc"
+    default = "subnet-29903243"
 }
 
 variable "aws_subnet2" {
