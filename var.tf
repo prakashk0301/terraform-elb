@@ -18,3 +18,7 @@ variable "aws_key" {
     default = "DevOpsKey"
 }
 
+ variable "aws_ami" {
+     description = "ami id"
+     default = "ami-0df0e7600ad0913a9"
+}
